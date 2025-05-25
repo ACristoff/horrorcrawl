@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="godot-library"
+config/name="horror-crawl"
 run/main_scene="uid://dpd3hr3oj8eku"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
@@ -27,3 +27,8 @@ AudMan="*res://Lib/Audio_Manager/audio_manager.tscn"
 [debug]
 
 gdscript/warnings/unused_signal=0
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720

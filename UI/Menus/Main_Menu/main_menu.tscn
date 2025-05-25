@@ -35,6 +35,10 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "horror crawl"
+
 [node name="Start" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 text = "Start"
