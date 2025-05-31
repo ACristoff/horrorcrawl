@@ -32,3 +32,13 @@ gdscript/warnings/unused_signal=0
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[file_customization]
+
+folder_colors={
+"res://Characters/": "teal",
+"res://Data/": "red",
+"res://Lib/": "purple",
+"res://UI/": "blue",
+"res://World/": "yellow"
+}
