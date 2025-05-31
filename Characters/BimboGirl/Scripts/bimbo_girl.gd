@@ -20,10 +20,12 @@ func _physics_process(delta):
 	if velocity:
 		movement.play("Walk")
 		if is_armed:
+			armed()
 			arms.play("ArmedWalk")
 		else:
 			arms.play("UnarmedWalk")
 	else:
+		silenced_pistol_held.visible = false
 		movement.play("Idle")
 		arms.play("Idle")
 	velocity = direction * speed
