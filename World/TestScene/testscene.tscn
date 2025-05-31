@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwbstk5vywumj"]
+
+[ext_resource type="Texture2D" uid="uid://b8cemd422ovl5" path="res://World/TestScene/Assets/grassfeild.png" id="1_itf82"]
+[ext_resource type="PackedScene" uid="uid://ctmvs616y4cq5" path="res://Characters/BimboGirl/bimbo_girl.tscn" id="2_itf82"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.0528, 0.05728, 0.12, 1)
+texture_filter = 3
+texture = ExtResource("1_itf82")
+
+[node name="BimboGirl" parent="." instance=ExtResource("2_itf82")]

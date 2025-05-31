@@ -1,3 +1,139 @@
-[gd_scene format=3 uid="uid://ctmvs616y4cq5"]
+[gd_scene load_steps=12 format=3 uid="uid://ctmvs616y4cq5"]
+
+[ext_resource type="Script" uid="uid://d2prh1ss7wdo1" path="res://Characters/BimboGirl/Scripts/bimbo_girl.gd" id="1_agard"]
+[ext_resource type="Texture2D" uid="uid://dap5etr5tgm20" path="res://Characters/BimboGirl/Assets/BimboGirl.png" id="1_j8cil"]
+[ext_resource type="Texture2D" uid="uid://brupsy77my0p2" path="res://Characters/BimboGirl/Assets/BimboTail.png" id="2_vv503"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vv503"]
+radius = 5.09902
+
+[sub_resource type="Animation" id="Animation_agard"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_vv503"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_e4a4y"]
+resource_name = "Idle"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e4a4y"]
+_data = {
+&"Idle": SubResource("Animation_e4a4y"),
+&"RESET": SubResource("Animation_vv503"),
+&"Walk": SubResource("Animation_agard")
+}
+
+[sub_resource type="Animation" id="Animation_tvgut"]
+resource_name = "Ponytail"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BimboTail:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_l5rxb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BimboTail:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xv6iq"]
+_data = {
+&"Ponytail": SubResource("Animation_tvgut"),
+&"RESET": SubResource("Animation_l5rxb")
+}
 
 [node name="BimboGirl" type="CharacterBody2D"]
+script = ExtResource("1_agard")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_j8cil")
+offset = Vector2(-3, 2)
+hframes = 9
+
+[node name="BimboTail" type="Sprite2D" parent="Body"]
+texture_filter = 3
+position = Vector2(-1, -9)
+texture = ExtResource("2_vv503")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_vv503")
+
+[node name="Movement" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_e4a4y")
+}
+
+[node name="Ponytail" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xv6iq")
+}
+autoplay = "Ponytail"
+speed_scale = 0.5
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
