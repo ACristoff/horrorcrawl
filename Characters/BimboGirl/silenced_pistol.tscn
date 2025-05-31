@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://byaehe46g63sh"]
+
+[ext_resource type="Texture2D" uid="uid://cdb42v55x5r4e" path="res://Characters/BimboGirl/Assets/SilencedPistol.png" id="1_h4kqo"]
+[ext_resource type="Shader" uid="uid://c7ik4p2fk2l0o" path="res://Characters/BimboGirl/Assets/Shaders/silenced_pistol.gdshader" id="1_qypkb"]
+[ext_resource type="Script" uid="uid://braa1leyt214v" path="res://Characters/BimboGirl/Scripts/silenced_pistol.gd" id="1_x0xtc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qypkb"]
+radius = 16.1245
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x0xtc"]
+shader = ExtResource("1_qypkb")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(1, 1, 1, 0)
+shader_parameter/texture_region = Vector4(0, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_qypkb"]
+resource_name = "Flash"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SilencedPistol:material:shader_parameter/outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.03333),
+"transitions": PackedFloat32Array(1.93187, 0.120742, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.313726), Color(1, 1, 1, 1), Color(1, 1, 1, 0.313726)]
+}
+
+[sub_resource type="Animation" id="Animation_x0xtc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SilencedPistol:material:shader_parameter/outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7u522"]
+_data = {
+&"Flash": SubResource("Animation_qypkb"),
+&"RESET": SubResource("Animation_x0xtc")
+}
+
+[node name="SilencedPistol" type="Area2D"]
+script = ExtResource("1_x0xtc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qypkb")
+
+[node name="SilencedPistol" type="Sprite2D" parent="."]
+texture_filter = 3
+material = SubResource("ShaderMaterial_x0xtc")
+texture = ExtResource("1_h4kqo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7u522")
+}
+autoplay = "Flash"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

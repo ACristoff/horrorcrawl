@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctmvs616y4cq5"]
+[gd_scene load_steps=19 format=3 uid="uid://ctmvs616y4cq5"]
 
 [ext_resource type="Script" uid="uid://d2prh1ss7wdo1" path="res://Characters/BimboGirl/Scripts/bimbo_girl.gd" id="1_agard"]
 [ext_resource type="Texture2D" uid="uid://dap5etr5tgm20" path="res://Characters/BimboGirl/Assets/BimboGirl.png" id="1_j8cil"]
 [ext_resource type="Texture2D" uid="uid://brupsy77my0p2" path="res://Characters/BimboGirl/Assets/BimboTail.png" id="2_vv503"]
+[ext_resource type="Texture2D" uid="uid://c6d2enxaglyuj" path="res://Characters/BimboGirl/Assets/BimboGirlArms.png" id="4_e4a4y"]
+[ext_resource type="Texture2D" uid="uid://cymonqdr7ik1d" path="res://Characters/BimboGirl/Assets/SilencedPistolHeld.png" id="5_tvgut"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vv503"]
 radius = 5.09902
@@ -24,6 +26,35 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/BimboTail:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-1, -9), Vector2(-1, -10), Vector2(-1, -9), Vector2(-1, -10)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"step"
+}, {
+"args": [],
+"method": &"step"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_vv503"]
 length = 0.001
@@ -38,6 +69,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/BimboTail:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -9)]
 }
 
 [sub_resource type="Animation" id="Animation_e4a4y"]
@@ -55,6 +98,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/BimboTail:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-1, -10)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e4a4y"]
@@ -103,7 +158,109 @@ _data = {
 &"RESET": SubResource("Animation_l5rxb")
 }
 
+[sub_resource type="Animation" id="Animation_xv6iq"]
+resource_name = "UnarmedWalk"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BimboGirlArms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_1bosj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BimboGirlArms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/SilencedPistolHeld:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_lrf5u"]
+resource_name = "Idle"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BimboGirlArms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_7uqqa"]
+resource_name = "ArmedWalk"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BimboGirlArms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13, 14, 15, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/SilencedPistolHeld:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(4, 18), Vector2(4, 17), Vector2(5, 16), Vector2(5, 17), Vector2(4, 17)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lrf5u"]
+_data = {
+&"ArmedWalk": SubResource("Animation_7uqqa"),
+&"Idle": SubResource("Animation_lrf5u"),
+&"RESET": SubResource("Animation_1bosj"),
+&"UnarmedWalk": SubResource("Animation_xv6iq")
+}
+
 [node name="BimboGirl" type="CharacterBody2D"]
+z_index = 10
 script = ExtResource("1_agard")
 
 [node name="Body" type="Sprite2D" parent="."]
@@ -117,6 +274,19 @@ texture_filter = 3
 position = Vector2(-1, -9)
 texture = ExtResource("2_vv503")
 hframes = 6
+
+[node name="BimboGirlArms" type="Sprite2D" parent="Body"]
+z_index = -1
+texture_filter = 3
+position = Vector2(-3, 2)
+texture = ExtResource("4_e4a4y")
+hframes = 17
+
+[node name="SilencedPistolHeld" type="Sprite2D" parent="Body"]
+visible = false
+texture_filter = 3
+position = Vector2(4, 18)
+texture = ExtResource("5_tvgut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -134,6 +304,11 @@ libraries = {
 }
 autoplay = "Ponytail"
 speed_scale = 0.5
+
+[node name="Arms" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lrf5u")
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
