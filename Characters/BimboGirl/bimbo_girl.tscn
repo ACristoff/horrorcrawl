@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctmvs616y4cq5"]
+[gd_scene load_steps=22 format=3 uid="uid://ctmvs616y4cq5"]
 
 [ext_resource type="Script" uid="uid://d2prh1ss7wdo1" path="res://Characters/BimboGirl/Scripts/bimbo_girl.gd" id="1_agard"]
 [ext_resource type="Texture2D" uid="uid://dap5etr5tgm20" path="res://Characters/BimboGirl/Assets/BimboGirl.png" id="1_j8cil"]
@@ -259,6 +259,18 @@ _data = {
 &"UnarmedWalk": SubResource("Animation_xv6iq")
 }
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tvgut"]
+polygon = PackedVector2Array(-4, -5, -4, -5, -3, -6, 2, -6, 5, -3, 7, 0, 7, 3, 4, 4, 3, 7, -6, 7, -7, 4, -8, 1, -6, -3, -4, -5)
+
+[sub_resource type="Gradient" id="Gradient_tvgut"]
+offsets = PackedFloat32Array(0, 0.25974)
+colors = PackedColorArray(0, 0, 0, 0.647059, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l5rxb"]
+gradient = SubResource("Gradient_tvgut")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="BimboGirl" type="CharacterBody2D"]
 z_index = 10
 script = ExtResource("1_agard")
@@ -312,3 +324,14 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_tvgut")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+texture = SubResource("GradientTexture2D_l5rxb")
