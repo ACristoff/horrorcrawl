@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-var speed = 80
+var speed = 240
 @onready var body = $Body
 @onready var movement = $Movement
 @onready var arms = $Arms
 @onready var silenced_pistol_held = $Body/SilencedPistolHeld
-@onready var step_sfx = preload("res://Characters/BimboGirl/Assets/sfx_step_sand_l.mp3")
+@onready var SFXLIFT = preload("res://Characters/BimboGirl/grass_lift.tscn")
+@onready var SFXSTEP = preload("res://Characters/BimboGirl/grass_step.tscn")
 
 var is_armed = false
 func armed():
@@ -13,7 +14,12 @@ func armed():
 	silenced_pistol_held.visible = true
 	
 func step():
-	AudMan.play_sfx(step_sfx)
+	var sfxs = SFXSTEP.instantiate()
+	add_child(sfxs)
+	
+func lift():
+	var sfxl = SFXLIFT.instantiate()
+	add_child(sfxl)
 
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")

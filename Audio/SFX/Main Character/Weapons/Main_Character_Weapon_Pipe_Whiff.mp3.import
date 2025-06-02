@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhvu3oqtmxfpy"
+path="res://.godot/imported/Main_Character_Weapon_Pipe_Whiff.mp3-28d9b9d0e855e96bac8e02b05a451df1.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Main Character/Weapons/Main_Character_Weapon_Pipe_Whiff.mp3"
+dest_files=["res://.godot/imported/Main_Character_Weapon_Pipe_Whiff.mp3-28d9b9d0e855e96bac8e02b05a451df1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

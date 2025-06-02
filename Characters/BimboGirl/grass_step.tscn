@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://i6rst3blv0so"]
+
+[ext_resource type="Script" uid="uid://b4oe765bicwlo" path="res://Characters/BimboGirl/Scripts/grass_step.gd" id="1_0a2sp"]
+[ext_resource type="AudioStream" uid="uid://4ipljgu6d07l" path="res://Characters/BimboGirl/Assets/Sounds/Main_Character_Footstep_Grass_Step1.mp3" id="1_ere1u"]
+[ext_resource type="AudioStream" uid="uid://b7wmjgbl41m67" path="res://Characters/BimboGirl/Assets/Sounds/Main_Character_Footstep_Grass_Step2.mp3" id="2_0a2sp"]
+[ext_resource type="AudioStream" uid="uid://cgmgqe34h3xsw" path="res://Characters/BimboGirl/Assets/Sounds/Main_Character_Footstep_Grass_Step3.mp3" id="3_j7gny"]
+[ext_resource type="AudioStream" uid="uid://bw08dd72prwom" path="res://Characters/BimboGirl/Assets/Sounds/Main_Character_Footstep_Grass_Step4.mp3" id="4_jff3h"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vfhe0"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("1_ere1u")
+stream_1/stream = ExtResource("2_0a2sp")
+stream_2/stream = ExtResource("3_j7gny")
+stream_3/stream = ExtResource("4_jff3h")
+
+[node name="GrassStep" type="Node2D"]
+script = ExtResource("1_0a2sp")
+
+[node name="GrassStep1" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_vfhe0")
+autoplay = true
+
+[connection signal="finished" from="GrassStep1" to="." method="_on_grass_step_1_finished"]

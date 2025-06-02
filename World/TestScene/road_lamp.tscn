@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckucasu8aqpvp"]
+
+[ext_resource type="Texture2D" uid="uid://6iqs0gj61ogj" path="res://World/TestScene/Assets/OverheadLamp2.png" id="1_4tain"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4tain"]
+radius = 3.0
+
+[sub_resource type="Gradient" id="Gradient_vhy40"]
+resource_local_to_scene = true
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p63yd"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_vhy40")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.862385, 0.119266)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ruinn"]
+polygon = PackedVector2Array(3, -3, 3, 3, 25, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4tain"]
+polygon = PackedVector2Array(1, -8, 6, -4, 6, 4, 1, 8, -3, 8, -7, 3, -9, 1, -9, -3, -3, -8)
+
+[node name="RoadLamp" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-7, 0)
+shape = SubResource("CircleShape2D_4tain")
+
+[node name="OverheadLamp" type="Sprite2D" parent="."]
+light_mask = 0
+z_index = 100
+position = Vector2(-15, 0)
+texture = ExtResource("1_4tain")
+
+[node name="PointLight2D" type="PointLight2D" parent="OverheadLamp"]
+position = Vector2(-15, -4.57764e-05)
+scale = Vector2(1.99219, 1.99219)
+energy = 1.02
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_p63yd")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(-10, 0)
+occluder = SubResource("OccluderPolygon2D_ruinn")
+occluder_light_mask = 2
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_4tain")

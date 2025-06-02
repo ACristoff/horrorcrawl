@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d3mlptojyx1h7"
+path="res://.godot/imported/Main_Character_Footstep_Grass_Lift1.mp3-0795c3076647dbb7391455be3fe15874.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Main Character/Movement/Main_Character_Footstep_Grass_Lift1.mp3"
+dest_files=["res://.godot/imported/Main_Character_Footstep_Grass_Lift1.mp3-0795c3076647dbb7391455be3fe15874.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
