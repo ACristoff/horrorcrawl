@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4nmhi3uheh63"]
+
+[ext_resource type="Texture2D" uid="uid://cppl3drfjeicn" path="res://Characters/TreeGuy/MonsterTest.png" id="1_fy3te"]
+[ext_resource type="Script" uid="uid://ngihunovrowl" path="res://Characters/TreeGuy/Scripts/man_skrove.gd" id="1_h86g4"]
+[ext_resource type="AudioStream" uid="uid://4ipljgu6d07l" path="res://Characters/BimboGirl/Assets/Sounds/Main_Character_Footstep_Grass_Step1.mp3" id="3_wcyyy"]
+[ext_resource type="AudioStream" uid="uid://b7wmjgbl41m67" path="res://Characters/BimboGirl/Assets/Sounds/Main_Character_Footstep_Grass_Step2.mp3" id="4_2kbg3"]
+[ext_resource type="AudioStream" uid="uid://cgmgqe34h3xsw" path="res://Characters/BimboGirl/Assets/Sounds/Main_Character_Footstep_Grass_Step3.mp3" id="5_7ukal"]
+[ext_resource type="AudioStream" uid="uid://bw08dd72prwom" path="res://Characters/BimboGirl/Assets/Sounds/Main_Character_Footstep_Grass_Step4.mp3" id="6_m6sb7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fy3te"]
+radius = 5.0
+
+[sub_resource type="Animation" id="Animation_h86g4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MonsterTest:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fy3te"]
+resource_name = "Run"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MonsterTest:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"stepsfx"
+}, {
+"args": [],
+"method": &"stepsfx"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wxj4g"]
+_data = {
+&"RESET": SubResource("Animation_h86g4"),
+&"Run": SubResource("Animation_fy3te")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_heqi5"]
+streams_count = 4
+stream_0/stream = ExtResource("3_wcyyy")
+stream_1/stream = ExtResource("4_2kbg3")
+stream_2/stream = ExtResource("5_7ukal")
+stream_3/stream = ExtResource("6_m6sb7")
+
+[node name="ManSkrove" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_h86g4")
+
+[node name="MonsterTest" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_fy3te")
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fy3te")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wxj4g")
+}
+autoplay = "Run"
+
+[node name="Step" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_heqi5")
+pitch_scale = 0.5
+max_distance = 1000.0
+attenuation = 10.1965

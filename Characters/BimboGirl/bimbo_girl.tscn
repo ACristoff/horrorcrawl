@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ctmvs616y4cq5"]
+[gd_scene load_steps=23 format=3 uid="uid://ctmvs616y4cq5"]
 
 [ext_resource type="Script" uid="uid://d2prh1ss7wdo1" path="res://Characters/BimboGirl/Scripts/bimbo_girl.gd" id="1_agard"]
 [ext_resource type="Texture2D" uid="uid://dap5etr5tgm20" path="res://Characters/BimboGirl/Assets/BimboGirl.png" id="1_j8cil"]
@@ -277,6 +277,12 @@ gradient = SubResource("Gradient_tvgut")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="Curve2D" id="Curve2D_tvgut"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 276, -159, 0, 0, 0, 0, -270, -159, 0, 0, 0, 0, -270, 159, 0, 0, 0, 0, 276, 159, 0, 0, 0, 0, 276, -159)
+}
+point_count = 5
+
 [node name="BimboGirl" type="CharacterBody2D"]
 z_index = 10
 script = ExtResource("1_agard")
@@ -314,7 +320,6 @@ shape = SubResource("CircleShape2D_vv503")
 libraries = {
 &"": SubResource("AnimationLibrary_e4a4y")
 }
-speed_scale = 3.0
 
 [node name="Ponytail" type="AnimationPlayer" parent="."]
 libraries = {
@@ -341,3 +346,15 @@ offset_top = -30.0
 offset_right = 32.0
 offset_bottom = 34.0
 texture = SubResource("GradientTexture2D_l5rxb")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_tvgut")
+
+[node name="EnemySpawn" type="PathFollow2D" parent="Path2D"]
+position = Vector2(276, -159)
+rotation = 3.14159
+
+[node name="SpawnEnemy" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnEnemy" to="." method="_on_spawn_enemy_timeout"]

@@ -12,38 +12,38 @@
 [ext_resource type="Script" uid="uid://daqjj8fgc8xrf" path="res://addons/rmsmartshape/materials/shape_material.gd" id="9_g2oqs"]
 [ext_resource type="Texture2D" uid="uid://bm8pfwir7ttic" path="res://World/TestScene/Assets/PathEndR.png" id="9_ygn34"]
 
-[sub_resource type="Resource" id="Resource_ev75v"]
-script = ExtResource("2_ibsqo")
-texture_idx = 14
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id="Resource_2xgp7"]
-script = ExtResource("3_xcp2r")
-position = Vector2(0.932251, 161.545)
-point_in = Vector2(0, 0)
-point_out = Vector2(0, 0)
-properties = SubResource("Resource_ev75v")
-
-[sub_resource type="Resource" id="Resource_ginh0"]
+[sub_resource type="Resource" id="Resource_imkqe"]
 script = ExtResource("2_ibsqo")
 texture_idx = 10
 flip = false
 width = 1.0
 
-[sub_resource type="Resource" id="Resource_gaq18"]
+[sub_resource type="Resource" id="Resource_88j31"]
 script = ExtResource("3_xcp2r")
 position = Vector2(-0.00196075, 0.0243816)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_ginh0")
+properties = SubResource("Resource_imkqe")
+
+[sub_resource type="Resource" id="Resource_c6713"]
+script = ExtResource("2_ibsqo")
+texture_idx = 14
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_n5rxx"]
+script = ExtResource("3_xcp2r")
+position = Vector2(0.932251, 161.545)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_c6713")
 
 [sub_resource type="Resource" id="Resource_avkxo"]
 resource_local_to_scene = true
 script = ExtResource("4_ygn34")
 _points = {
-0: SubResource("Resource_gaq18"),
-1: SubResource("Resource_2xgp7")
+0: SubResource("Resource_88j31"),
+1: SubResource("Resource_n5rxx")
 }
 _point_order = PackedInt32Array(0, 1)
 _constraints = {}
@@ -53,7 +53,7 @@ tessellation_stages = 3
 tessellation_tolerance = 6.0
 curve_bake_interval = 20.0
 
-[sub_resource type="Resource" id="Resource_pwdyx"]
+[sub_resource type="Resource" id="Resource_x0wgm"]
 resource_local_to_scene = true
 script = ExtResource("6_j3saa")
 textures = Array[Texture2D]([ExtResource("7_5gpkk")])
@@ -69,16 +69,16 @@ use_taper_texture = true
 fit_mode = 0
 metadata/_custom_type_script = "uid://d1wigj1f037jw"
 
-[sub_resource type="Resource" id="Resource_e3ypp"]
+[sub_resource type="Resource" id="Resource_pn4sk"]
 script = ExtResource("8_h7kvf")
 begin = 0.0
 distance = 360.0
 edgeRendering = Vector2(0, 0)
 
-[sub_resource type="Resource" id="Resource_qmbbi"]
+[sub_resource type="Resource" id="Resource_jp15w"]
 script = ExtResource("5_f6lsg")
-edge_material = SubResource("Resource_pwdyx")
-normal_range = SubResource("Resource_e3ypp")
+edge_material = SubResource("Resource_x0wgm")
+normal_range = SubResource("Resource_pn4sk")
 weld = true
 taper_sharp_corners = false
 render = true
@@ -90,7 +90,7 @@ metadata/_custom_type_script = "uid://bm5w3kecn5mtu"
 [sub_resource type="Resource" id="Resource_sp47m"]
 resource_local_to_scene = true
 script = ExtResource("9_g2oqs")
-_edge_meta_materials = Array[ExtResource("5_f6lsg")]([SubResource("Resource_qmbbi")])
+_edge_meta_materials = Array[ExtResource("5_f6lsg")]([SubResource("Resource_jp15w")])
 fill_textures = Array[Texture2D]([])
 fill_texture_z_index = -10
 fill_texture_show_behind_parent = false
