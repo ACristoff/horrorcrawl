@@ -355,6 +355,5 @@ position = Vector2(276, -159)
 rotation = 3.14159
 
 [node name="SpawnEnemy" type="Timer" parent="."]
-autostart = true
 
 [connection signal="timeout" from="SpawnEnemy" to="." method="_on_spawn_enemy_timeout"]
