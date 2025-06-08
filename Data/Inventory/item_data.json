@@ -1,0 +1,14 @@
+{
+	"1":{
+		"Name": "Item1",
+		"Value": 10,
+		"Grid": "0,0/1,0/-1,0",
+		"Icon": "res://Data/Inventory/Items/Item1.png"
+	},
+	"2":{
+		"Name": "Item2",
+		"Value": 10,
+		"Grid": "0,0/0,1/-1,0",
+		"Icon": "res://Data/Inventory/Items/Item2.png"
+	}
+}

@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://cults76adbst4"]
+
+[ext_resource type="Script" uid="uid://b5t1nbnhrh1ly" path="res://Data/Inventory/inventory.gd" id="1_6iqh7"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6iqh7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 456.0
+offset_bottom = 315.0
+color = Color(5.41471e-08, 0.109822, 0.200159, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Spawner" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 12
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Header/Spawner" to="." method="_on_spawner_pressed"]
