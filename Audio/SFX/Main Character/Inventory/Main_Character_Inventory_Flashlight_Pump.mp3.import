@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c507n1j34k4fp"
+path="res://.godot/imported/Main_Character_Inventory_Flashlight_Pump.mp3-a3208a2bc2dda7123e41f166762ec6ff.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Main Character/Inventory/Main_Character_Inventory_Flashlight_Pump.mp3"
+dest_files=["res://.godot/imported/Main_Character_Inventory_Flashlight_Pump.mp3-a3208a2bc2dda7123e41f166762ec6ff.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
